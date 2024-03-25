@@ -15,6 +15,7 @@ const checkAuthStatus = require('./middlewares/check-auth')
 const authRoutes = require('./routes/auth.routes');
 const productRoutes = require('./routes/base.routes');
 const baseRoutes = require('./routes/products.routes');
+const adminRoutes = require('./routes/admin.routes');
 
 const errHandler = require('./middlewares/error-handler')
 
@@ -25,6 +26,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.static('public'));
+app.use('/products/asset', express.static('product-data'));
 app.use(express.urlencoded({extended: false}));
 
 app.use(expressSession(sessionConfig))
@@ -35,6 +37,8 @@ app.use(checkAuthStatus)
 app.use(authRoutes);
 app.use(productRoutes);
 app.use(baseRoutes);
+app.use('/admin', adminRoutes);
+
 app.use(errHandler);
 
 db.connectToDatabase().then(function(){

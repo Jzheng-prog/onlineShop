@@ -35,6 +35,14 @@ class User{
         //console.log('sign_up -' + this.email, this.name, this.address, this.password, hashPW);
     }
 
+    async existAlready(){
+        const existingUser = await this.getUserWithSameEmail();
+        if(existingUser){
+            return true;
+        }
+        return false;
+    }
+
     getUserWithSameEmail(){
         return db.getDB().collection('users').findOne({email: this.email});
     }
