@@ -1,0 +1,19 @@
+<%-include('../../shared/includes/head', { pageTitle: 'Cart'})%>
+
+<link rel="stylesheet" href="/styles/form.css">
+<link rel="stylesheet" href="/styles/auth.css">
+<link rel="stylesheet" href="/styles/cart.css">
+
+
+</head>
+<body>
+    <%-include('../../shared/includes/header')%>
+    <main>
+        <h1>Your Cart</h1>
+        <ul id = 'cart-items'>
+            <li>
+                <%- include('includes/cart-item') %>
+            </li>
+        </ul>
+    </main>
+</body>

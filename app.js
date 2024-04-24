@@ -31,6 +31,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public'));
 app.use('/products/asset', express.static('product-data'));
 app.use(express.urlencoded({extended: false}));
+app.use(express.json());
 
 //middlewares
 app.use(expressSession(sessionConfig))
@@ -43,8 +44,9 @@ app.use(checkAuthStatus)
 app.use(authRoutes);
 app.use(productRoutes);
 app.use(baseRoutes);
-app.use(protectRoutesMID)
 app.use('/cart', cartRoutes)
+
+app.use(protectRoutesMID)
 app.use('/admin', adminRoutes);
 
 app.use(errHandler);

@@ -86,7 +86,7 @@ class Product{
             error.code = 404;
             throw error;
         }
-        console.log('inside findByID, product.model.js id =', prodID)
+        // console.log('inside findByID, product.model.js id =', prodID)
         return new Product(product);
     }
 

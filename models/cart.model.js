@@ -12,8 +12,12 @@ class Cart{
             totalPrice: currProduct.price
         }
 
+        // console.log('cart.model cartItem:',cartItem)
+
+
         for(let i = 0; i < this.items.length; i++){
             const item = this.items[i];
+            //console.log('inside for:', item)
 
             if(item.product.id === currProduct.id){
                 cartItem.quantity = item.quantity +1;
@@ -22,12 +26,14 @@ class Cart{
                 
                 this.totalQuantity++;
                 this.totalPrice += currProduct.price;
+                console.log('cart.model this.totalPrice:',this.totalPrice)
                 return;
             }
-            this.items.push(cartItem);
-            this.totalQuantity++;
-            this.totalPrice += currProduct.price;
         }
+        this.items.push(cartItem);
+        this.totalQuantity++;
+        this.totalPrice += currProduct.price;
+        console.log('cart.model this.totalPrice:',this.totalPrice)
 
     }
 }
