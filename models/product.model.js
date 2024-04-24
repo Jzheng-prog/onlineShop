@@ -1,4 +1,6 @@
 
+
+const mongodb = require('mongodb')
 const db = require('../data/database')
 
 class Product{
@@ -11,8 +13,8 @@ class Product{
         this.description = prodData.description;
 
         this.image = prodData.image;
-        this.imagePath = `product-data/images/${prodData.image}`
-        this.imageUrl = `/products/asset/images/${prodData.image}`
+        this.updateImageData();
+
         if(prodData._id){
             this.id = prodData._id.toString();
         }
@@ -22,9 +24,18 @@ class Product{
 
     }
 
+    updateImageData(){
+        this.imagePath = `product-data/images/${this.image}`
+        this.imageUrl = `/products/asset/images/${this.image}`
+    }
+    async replaceImage(newImage){
+        this.image = newImage;
+        this.updateImageData();
+    }
+
     static async findAll(){
         const products = await db.getDB().collection('products').find().toArray();
-        //console.log('inside findAll, product.Model', products)
+        // console.log('inside findAll, product.Model', products)
         return products.map(function(productDocument){
             return new Product(productDocument);
         })
@@ -39,7 +50,51 @@ class Product{
             image: this.image
         };
 
-        await db.getDB().collection('products').insertOne(productData);
+        if(this.id){
+            const prodID = new mongodb.ObjectId(this.id);
+            if(!this.image){
+                delete productData.image;
+            }
+            await db.getDB().collection('products').updateOne(
+                {_id: prodID},
+                {$set:productData}
+            );
+        }else{
+            await db.getDB().collection('products').insertOne(productData);
+        }
+
+        // await db.getDB().collection('products').insertOne(productData);
+    }
+
+    static async findByID(ProductID){
+
+        // console.log('inside findByID, product.model.js id =', prodID)
+
+
+        let prodID;
+
+        try{
+            prodID = await new mongodb.ObjectId(ProductID)
+        }catch(error){
+            error.code = 404;
+            throw error;
+        }
+        const product = await db.getDB().collection('products').findOne({_id:prodID});
+
+        if(!product){
+            const error = new Error('Could not be Located/Founded!')
+            error.code = 404;
+            throw error;
+        }
+        console.log('inside findByID, product.model.js id =', prodID)
+        return new Product(product);
+    }
+
+    remove(){
+        console.log('removed');
+
+        const prodId = new mongodb.ObjectId(this.id);
+        return db.getDB().collection('products').deleteOne({_id: prodId});
     }
 }
 

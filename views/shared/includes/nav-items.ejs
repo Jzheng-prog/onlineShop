@@ -1,16 +1,27 @@
 <ul class = 'nav-items'>
+
+    <!-- Not Admin, for regular customer not sign in-->
     <% if (!locals.isAdmin) { %>
         <li><a href ='/'> Shop</a></li>
-        <li><a href ='/cart'> Cart</a></li>
+        <li><a href ='/cart'> Cart <span class ='badge'>0</span></a></li>
     <% } %>
+
+    <!-- Not Admin, for regular customer whose sign in -->
+
     <% if (!locals.isAdmin && locals.isAuth) { %>
         <li><a href ='/orders'> Order</a></li>
     <% } %>
+
+
+
+    <!-- Is Admin-->
+
     <% if (locals.isAdmin) { %>
         <li><a href ='/admin/products'> Admin-Products</a></li>
         <li><a href ='/admin/orders'> Admin-Orders</a></li>
     <% } %>
 
+    <!-- Is login-->
 
     <% if (locals.isAuth) { %>
         <li>
@@ -20,6 +31,9 @@
             </form>
         </li>
     <% } %>
+
+    <!-- not login-->
+
     <% if (!locals.isAuth) { %>
         <li><a href ='/signup'>signup</a></li>
         <li><a href ='/login'> login</a></li>

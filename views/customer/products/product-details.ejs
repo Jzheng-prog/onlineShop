@@ -1,0 +1,22 @@
+<%-include('../../shared/includes/head', { pageTitle: 'Home'})%>
+
+    <link rel="stylesheet" href="/styles/form.css">
+    <link rel="stylesheet" href="/styles/auth.css">
+    <link rel="stylesheet" href="/styles/products.css">
+
+
+</head>
+<body>
+    <%-include('../../shared/includes/header')%>
+    <main id = 'product-details'>
+        <header>
+            <img src="<%=product.imageUrl%>" alt="">
+            <div id = 'product-info'>
+                <h1> Name</h1>
+                <p>Price</p>
+                <button class = 'btn'> Add to Cart</button>
+            </div>
+        </header>
+        <p id = 'product-description'>Description</p>
+    </main>
+</body>
