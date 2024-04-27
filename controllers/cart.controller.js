@@ -33,10 +33,36 @@ async function addCartItem(req,res,next){
 }
 
 function getCart(req,res){
-    res.render('/customer/cart/cart')
+    res.render('customer/cart/cart')
+}
+
+function updateCartItem(req,res){
+
+    //console.log('cart.controller updateCartItem')
+
+    const cart = res.locals.cart;
+
+    //console.log('req.body',req.body)
+
+
+    const updatedItemData = cart.updateItem(req.body.productid, req.body.quantity);
+
+    //console.log('cart.controller', updatedItemData)
+
+    req.session.cart = cart;
+
+    res.json({
+        message:'item Updated',
+        updatedCartData: {
+            newTotalQuantity: cart.totalQuantity,
+            newTotalPrice: cart.totalPrice,
+            updatedItemPrice: updatedItemData.updatedItemPrice // return from cart.model updatedItem
+        }
+    })
 }
 
 module.exports ={
     addCartItem:addCartItem,
-    getCart:getCart
+    getCart:getCart,
+    updateCartItem:updateCartItem
 }
