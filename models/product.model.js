@@ -96,6 +96,22 @@ class Product{
         const prodId = new mongodb.ObjectId(this.id);
         return db.getDB().collection('products').deleteOne({_id: prodId});
     }
+
+
+    //update changing prices
+    static async findMultiple(ids){
+        const prodIds = ids.map(function(id){
+            return new mongodb.ObjectId(id)
+        })
+
+        const products = await db.getDB().collection('products').find({
+            _id:{$in:prodIds}
+        }).toArray();
+
+        return products.map(function(prodDoc){
+            return new Product(prodDoc);
+        })
+    }
 }
 
 module.exports = Product;

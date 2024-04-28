@@ -1,0 +1,15 @@
+<%- include('../../shared/includes/head',{pageTitle: 'Admin-Orders'}) %>
+<link rel="stylesheet" href="/styles/form.css">
+<link rel="stylesheet" href="/styles/auth.css">    
+<link rel="stylesheet" href="/styles/orders.css">
+<script src= '/scripts/order-management.js' defer ></script>
+
+
+<head>
+    <body>
+        <%-include('../../shared/includes/header') %>
+        <main>
+            <%-include('../../shared/includes/order-list',{orders:orders}) %>
+        </main>
+    </body>
+</head>

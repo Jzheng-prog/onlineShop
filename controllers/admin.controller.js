@@ -1,5 +1,7 @@
 
 const Product = require('../models/product.model')
+const Order = require('../models/order.model')
+
 
 // console.log('inside admin.controller.js')
 
@@ -45,8 +47,6 @@ async function createNewProduct(req,res, next){
 }
 
 
-
-
 async function getUpdateProduct(req, res, next){
 
     console.log('admin.controller, inside getUpdate')
@@ -63,9 +63,6 @@ async function getUpdateProduct(req, res, next){
         next(error)
     }
 }
-
-
-
 
 
 async function updateProduct(req,res,next){
@@ -107,11 +104,39 @@ async function deleteProduct(req,res,next){
     res.json({message:'Deleted Product!'})
 }
 
+async function getOrder(req,res, next){
+    try{
+        const orders = await Order.findAll();
+
+        res.render('admin/orders/admin-orders', {orders:orders})
+    }catch(error){
+        next(error)
+    }
+}
+
+async function updateOrder(req, res, next){
+    const orderID = req.params.id;
+
+    const newStatus = req.body.newStatus;
+
+    try{
+        const order = await Order.findByID(orderID);
+        order.status = newStatus;
+
+        await order.save();
+        res.json({message:'OrderUpdated', newStatus:newStatus})
+    }catch(error){
+        next(error)
+    }
+}
+
 module.exports ={
     getNewProduct: getNewProduct,
     getProducts: getProducts,
     createNewProduct:createNewProduct,
     getUpdateProduct:getUpdateProduct,
     updateProduct:updateProduct,
-    deleteProduct:deleteProduct
+    deleteProduct:deleteProduct,
+    updateOrder:updateOrder,
+    getOrder:getOrder
 }

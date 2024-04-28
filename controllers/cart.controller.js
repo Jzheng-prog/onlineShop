@@ -45,7 +45,7 @@ function updateCartItem(req,res){
     //console.log('req.body',req.body)
 
 
-    const updatedItemData = cart.updateItem(req.body.productid, req.body.quantity);
+    const updatedItemData = cart.updateItem(req.body.productid, +req.body.quantity);
 
     //console.log('cart.controller', updatedItemData)
 

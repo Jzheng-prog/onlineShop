@@ -1,5 +1,5 @@
 const cartItemUpdateFormElements = document.querySelectorAll('.cart-item-management')
-const cartBadge = document.querySelector('.nav-item .badge');
+const cartBadgeElements = document.querySelectorAll('.nav-item .badge');
 const cartTotalPriceElement = document.getElementById('cart-total-price');
 
 
@@ -63,9 +63,10 @@ async function updateCartItem(event){
 
     cartTotalPriceElement.textContent = responseData.updatedCartData.newTotalPrice.toFixed(2);
 
-    console.log('cartBadge.textContent: ',cartBadge)
-    cartBadge.textContent = responseData.updatedCartData.newTotalQuantity;
-
+    //console.log('cartBadge.textContent: ',cartBadge)
+    for(const cartBadgeElement of cartBadgeElements){
+        cartBadgeElement.textContent = responseData.updatedCartData.newTotalQuantity;
+    }
 }
 
 for(const formElement of cartItemUpdateFormElements){
