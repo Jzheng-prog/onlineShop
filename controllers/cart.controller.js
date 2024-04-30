@@ -53,7 +53,7 @@ function updateCartItem(req,res){
 
     //console.log('cart.controller cart:', cart)
 
-    //console.log('cart.controller req.session.cart', req.session.cart)
+    console.log('cart.controller req.session.cart', req.session)
 
     res.json({
         message:'item Updated',

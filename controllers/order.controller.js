@@ -2,6 +2,8 @@ const User = require('../models/users.model')
 
 const Order = require('../models/order.model')
 
+const stripe = require('stripe')('keyekeykey')
+
 
 async function addOrder(req,res,next){
 
@@ -33,7 +35,29 @@ async function addOrder(req,res,next){
     }
 
     req.session.cart = null;
-    res.redirect('/orders')
+
+    const session = await stripe.checkout.sessions.create({
+        payment_method_types:['card'],
+        line_items: cart.items.map(function(item){
+            return{
+        
+                price_data:{
+                    currency: 'usd',
+                    product_data: {
+                        name: item.product.title
+                    },
+                    unit_amount: +item.product.price.toFixed(2) * 100
+                },
+                quantity: item.quantity,
+        
+            }
+        }),
+        mode: 'payment',
+        success_url:'http://localhost:3000/orders/success',
+        cancel_url:'http://localhost:3000/orders/failure'
+    })
+
+    res.redirect(303,session.url)
 }
 
 async function getOrders(req,res, next){
@@ -52,7 +76,17 @@ async function getOrders(req,res, next){
     }
 }
 
+function getSucess(req,res){
+    res.render('customer/orders/success')
+}
+
+function getFailure(req,res){
+    res.render('customer/orders/failure')
+}
+
 module.exports={
     getOrders:getOrders,
-    addOrder:addOrder
+    addOrder:addOrder,
+    getSucess:getSucess,
+    getFailure:getFailure
 }

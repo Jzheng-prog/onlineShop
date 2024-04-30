@@ -125,6 +125,16 @@ h1 {
     background-color: rgb(71, 48, 13);
 }
 
+.if-form{
+    background-color: var(--color-green-4);
+}
+.if-form button{
+    background-color: var(--color-gray-600);;
+}
+.if-form button:hover{
+    background-color: rgb(71, 48, 13);
+}
+
 @media(min-width: 48rem) {
     .cart-item{
         flex-direction: row;

@@ -5,7 +5,6 @@ const cartTotalPriceElement = document.getElementById('cart-total-price');
 
 async function updateCartItem(event){
 
-    console.log('cart-item-management.js')
 
     event.preventDefault();
 
@@ -15,32 +14,33 @@ async function updateCartItem(event){
   
     const quantity = form.firstElementChild.value; // input
 
-
     let response;
 
     try{
-     response = await fetch('/cart/items',{
-            method: 'PATCH',
-            body: JSON.stringify({
-                productid:  prodId,
-                _csrf: csrfToken,
-                quantity:quantity
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
+        response = await fetch('/cart/items',{
+                method: 'PATCH',
+                body: JSON.stringify({
+                    productid:  prodId,
+                    _csrf: csrfToken,
+                    quantity:quantity
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
         })
 
     }catch(error){
 
-        alert('Something Went Wrong');
+        alert('Cart-Item-Management Something Went Wrong');
         return;
 
     }
 
+    //console.log('Cart-Item-Management reponse:', response)
+
 
     if(!response.ok){
-        alert('Something Went Wrong');
+        alert('Cart-Item-Management Something Went Wrong2');
         return;
     }
 
