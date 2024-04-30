@@ -13,7 +13,7 @@ main{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid var(--color-primary-500);
+    border-bottom: 1px solid #000000;
     background-color: var(--gray--500);
 }
 #main-header nav{
@@ -39,11 +39,10 @@ main{
 .nav-items button{
     cursor: pointer;
     font: inherit;
-    /* border: 1px solid var(--color-primary-500); */
-    background-color: green;
+    border: 1px solid;
+    background-color: white;
     padding: var(--space-2) var(--space-4);
     border-radius: var(--border-radius-small);
-    color: var(--color-primary-500)
 }
 #mobile-menu{
     position: fixed;
@@ -103,7 +102,7 @@ main{
         flex-direction: row;
     }
     .nav-items a:hover, .nav-items a:active{
-        background-color: var(--color-primary-500);
+        background-color: white;
     }
     .nav-items a{
         padding: var(--space-2) var(--space-4);

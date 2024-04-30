@@ -1,19 +1,18 @@
 const cartItemUpdateFormElements = document.querySelectorAll('.cart-item-management')
-const cartBadgeElements = document.querySelectorAll('.nav-item .badge');
+const cartBadgeElements = document.querySelectorAll('.nav-items .badge');
 const cartTotalPriceElement = document.getElementById('cart-total-price');
-
 
 
 async function updateCartItem(event){
 
-    //console.log('cart-item-management.js')
+    console.log('cart-item-management.js')
 
     event.preventDefault();
 
     const form = event.target;
     const prodId = form.dataset.productid;
     const csrfToken = form.dataset.csrf;
-
+  
     const quantity = form.firstElementChild.value; // input
 
 
@@ -32,15 +31,12 @@ async function updateCartItem(event){
             }
         })
 
-        //console.log('response:',response)
     }catch(error){
 
         alert('Something Went Wrong');
         return;
 
     }
-
-    //console.log(response)
 
 
     if(!response.ok){
@@ -54,9 +50,16 @@ async function updateCartItem(event){
     if(responseData.updatedCartData.updatedItemPrice ===0){
         form.parentElement.parentElement.remove();
     }else{
-        const cartItemTotalPriceElement = form.parentElement.querySelector('.cart-item-price'); // <span> + <p>
 
-        cartItemTotalPriceElement.textContent = responseData.updatedCartData.updatedItemPrice.toFixed(2)
+        const totalProductPrice = form.parentElement.querySelector('.cart-item-price .cart-product-price')
+
+        const totalProductPrice3 = form.parentElement.querySelector('.cart-item-price .cart-product-price3')
+
+        totalProductPrice.textContent = responseData.updatedCartData.updatedItemPrice.toFixed(2)
+
+        totalProductPrice3.textContent = quantity;
+
+
     }
     
 

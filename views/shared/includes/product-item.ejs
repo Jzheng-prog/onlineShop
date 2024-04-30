@@ -5,18 +5,16 @@
         <h2><%=product.title%></h2>
 
         <div class = 'product-item-action'>
-            <ul class = 'products-grid'>
-                <% if (locals.isAdmin){ %>
+            <% if (locals.isAdmin){ %>
 
-                    <a class = 'btn btn-alt' href="/admin/products/<%=product.id%>">View and Edit</a>
+                <a class = 'btn btn-alt' href="/admin/products/<%=product.id%>">View and Edit</a>
 
-                    <button class = 'btn btn-alt' data-productid ='<%=product.id%>' data-csrf ='<%=locals.csrfToken%>'> Delete</button>
-    
-                <% }else { %>
-                    <a class = 'btn btn-alt' href="/products/<%=product.id%>">View Detail</a>
-                <% } %>
+                <button class = 'btn btn-alt' data-productid ='<%=product.id%>' data-csrf ='<%=locals.csrfToken%>'> Delete</button>
 
-            </ul>
+            <% }else { %>
+                <a class = 'btn btn-alt' href="/products/<%=product.id%>">View Detail</a>
+            <% } %>
+
         </div>
     </div>
 </article>

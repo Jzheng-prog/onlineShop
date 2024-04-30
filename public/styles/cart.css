@@ -1,34 +1,128 @@
-.cart-item{
-    display: flex;
-    flex-direction: column;
-    background-color: var(--color-gray-700);
-    padding: var(--space-4);
-    border-radius: var(--border-radius-medium);
-    margin: var(--space-4) 0;
-}
-.cart-item h2{
-    font-size: 1rem;
-    margin:0;
-}
-.cart-item-price{
-    font-style: italic;
-    color: var(--gray-300);
-}
-#cart-total p{
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--color-primary-500);
-}
-#cart-total{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-#cart-total #cart-total-fallback{
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+/* Style for cart items */
+#cart-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Style for each cart item */
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Style for cart total */
+#cart-total {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+}
+#cart-total form{
+    margin: 0;
+}
+
+#cart-total-price {
+    font-weight: bold;
+}
+
+/* Style for the fallback messages */
+#cart-total-fallback {
+    font-style: italic;
+    color: #000000;
+    font-weight: bold;
+
+}
+
+/* Style for the "Buy Products" button */
+.btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Styles for the cart item */
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Styling for the cart item info */
+.cart-item-info {
+    flex: 1;
+}
+
+.cart-item-info h2 {
+    margin: 0 0 10px;
+    font-size: 1.2rem;
+}
+
+.cart-item-info p {
+    margin: auto;
     font-size: 1rem;
-    font-weight: normal;
+}
+
+.cart-item-info {
+    color: #000000;
+}
+
+.cart-item-price .cart-product-price2, .cart-product-price3{
+    color: var(--color-gray-600);
+}
+
+/* Styling for the cart item management */
+.cart-item-management {
+    display: flex;
+    gap: 0.5rem;
+    background-color: var(--color-green-4);
+}
+
+.cart-item-management input[type="number"] {
+    width: 4rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.cart-item-management button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: var(--color-gray-600);
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.cart-item-management button:hover {
+    background-color: rgb(71, 48, 13);
 }
 
 @media(min-width: 48rem) {

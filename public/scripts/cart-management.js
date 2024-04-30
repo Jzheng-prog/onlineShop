@@ -38,13 +38,7 @@ async function addToCart(){
 
     for(const cartBadgeElement of cartBadgeElements){
         cartBadgeElement.textContent = newTotalQuantity;
-
     }
-
-    //console.log('cart-management', responseData)
-    //.log('cart-management newTotalQuantity', newTotalQuantity)
-
-
 
 }
 

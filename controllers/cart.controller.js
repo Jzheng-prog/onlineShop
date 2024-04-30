@@ -47,9 +47,13 @@ function updateCartItem(req,res){
 
     const updatedItemData = cart.updateItem(req.body.productid, +req.body.quantity);
 
-    //console.log('cart.controller', updatedItemData)
+    //console.log('cart.controller updatedItemData', updatedItemData)
 
     req.session.cart = cart;
+
+    //console.log('cart.controller cart:', cart)
+
+    //console.log('cart.controller req.session.cart', req.session.cart)
 
     res.json({
         message:'item Updated',
