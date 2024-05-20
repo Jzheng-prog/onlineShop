@@ -13,6 +13,9 @@ main {
 h1 {
     margin-bottom: 20px;
 }
+h2 .item-detail-title{
+    color: white;
+}
 
 /* Style for cart items */
 #cart-items {

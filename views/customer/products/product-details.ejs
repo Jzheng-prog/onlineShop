@@ -12,11 +12,14 @@
         <header>
             <img src="<%=product.imageUrl%>" alt="">
             <div id = 'product-info'>
-                <h1><%=product.title%> </h1>
-                <p><%=product.price%></p>
+                <h1 class = 'product-detail-title'><%=product.title%></h1>
+                <p><b>Price: </b> $<%=product.price%></p>
+                <p><b>Summary: </b> </p>
+                <p><%=product.summary%></p>
                 <button class = 'btn' data-productid = "<%=product.id%>" data-csrf= "<%=locals.csrfToken%>" > Add to Cart</button>
             </div>
         </header>
-        <p id = 'product-description'><%=product.description%></p>
+        <p id = 'product-description'><b>Description: </b><%=product.description%></p>
+
     </main>
 </body>
