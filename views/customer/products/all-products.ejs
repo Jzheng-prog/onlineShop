@@ -10,6 +10,8 @@
     <%-include('../../shared/includes/header')%>
     <main>
         <h1>All Products</h1>
+        <!-- Seach Function inside /mobile -->
+        <input type="text" onkeyup="mySearch()" id= 'searchInput' placeholder="Search....">
         <section>
             <ul id = 'products-grid'>
                 <% for(const prod of products) { %>
@@ -19,4 +21,5 @@
                 <% } %>
             </ul>
         </section>
+    </main>
 </body>

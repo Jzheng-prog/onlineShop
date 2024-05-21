@@ -1,10 +1,12 @@
-const cartItemUpdateFormElements = document.querySelectorAll('.cart-item-management')
+const cartItemUpdateFormElements = document.querySelectorAll('.cart-item-management') //multiple forms
 const cartBadgeElements = document.querySelectorAll('.nav-items .badge');
 const cartTotalPriceElement = document.getElementById('cart-total-price');
 
+//script is call in cart.ejs.
+
+//ajax request
 
 async function updateCartItem(event){
-
 
     event.preventDefault();
 
@@ -17,10 +19,10 @@ async function updateCartItem(event){
     let response;
 
     try{
-        response = await fetch('/cart/items',{
+        response = await fetch('/cart/items',{ //routes defined in cart.routes
                 method: 'PATCH',
                 body: JSON.stringify({
-                    productid:  prodId,
+                    productid:  prodId, //productid value is from cart.controller
                     _csrf: csrfToken,
                     quantity:quantity
                 }),

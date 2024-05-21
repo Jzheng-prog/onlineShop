@@ -1,6 +1,6 @@
 
 .order-item {
-    background-color: var(--color-gray-400);
+    background-color: white;
     border-radius: var(--border-radius-small);
     padding: var(--space-4);
     margin: var(--space-4) 0;
@@ -16,7 +16,7 @@
 }
 
 .order-actions form{
-  background-color: var(--color-gray-400);
+  background-color: white;
   margin: 0;
   padding: 0;
   justify-content: end;
