@@ -76,6 +76,9 @@ inside terminal run:
 
 
 **Make sure mongodb and stripe is setup correctly**
+Navigate to controllers folder in to order.controller.js.
+const stripe = require('stripe')('***Put your own secret key from sripe')
+
 
 
 
