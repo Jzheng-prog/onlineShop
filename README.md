@@ -70,9 +70,9 @@ Admin status must be manually given to a created user inside mongoDB.
 1. Clone the repository:
 
 inside terminal run:
-cd onlineShop
-npm install
-node app.js
+- cd onlineShop
+- npm install
+- node app.jss
 
 
 **Make sure mongodb and stripe is setup correctly**
